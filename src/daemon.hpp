@@ -6,7 +6,6 @@
 
 class daemon {
     public:
-    daemon();
     void run();
     void kill();
 

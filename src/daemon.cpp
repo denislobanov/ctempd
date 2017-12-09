@@ -5,10 +5,6 @@
 
 #include "daemon.hpp"
 
-daemon::daemon() {
-    running  = true;
-}
-
 // main loop, trap sigkil
 void daemon::run() {
     using namespace std::chrono_literals;
@@ -16,6 +12,7 @@ void daemon::run() {
 
     // synchronise kill
     std::scoped_lock{running_lock};
+    running = true;
     while(running) {
         int temp = read_temp();
 
