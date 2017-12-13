@@ -1,11 +1,14 @@
 ExternalProject_Add(ec
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ec
-    CONFIGURE_COMMAND sed -i "s/-Werror /-std=gnu90 /g" Makefile.toolchain
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ec
+    CONFIGURE_COMMAND sed -i "s/-Werror /-std=gnu90 /g" ${CMAKE_CURRENT_SOURCE_DIR}/ec/Makefile.toolchain
+    BUILD_IN_SOURCE 1
+    BUILD_COMMAND make BOARD=samus
+    INSTALL_COMMAND cmake -E echo "Skipping install step."
+    PREFIX=${CMAKE_CURRENT_BINARY_DIR}/ec
 )
 
-ExternalProject_Get_Property(ec install_dir)
-
-add_library(ec STATIC IMPORTED)
-include_directories(${install_dir}/ec/include)
+#ExternalProject_Get_Property(ec install_dir)
+#set_property(TARGET ec PROPERTY IMPORTED_LOCATION ${install_dir}/build/samus)
+#set_property(TARGET ec PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${install_dir})
+#include_directories(${install_dir}/ec/include ${install_dir}/util)

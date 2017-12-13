@@ -9,9 +9,6 @@ file(GLOB ctempd_src
     "*.h"
     "*.cpp"
 )
-
-add_dependencies(ctempd ec)
-
 add_executable(ctempd ${ctempd_src})
+target_link_libraries(ctempd ec-tool)
 
-target_link_libraries(ctempd ec)
