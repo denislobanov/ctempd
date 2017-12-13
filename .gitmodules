@@ -1,0 +1,3 @@
+[submodule "thirdparty/ec"]
+	path = thirdparty/ec
+	url = https://chromium.googlesource.com/chromiumos/platform/ec
