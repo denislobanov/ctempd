@@ -10,5 +10,5 @@ file(GLOB ctempd_src
     "*.cpp"
 )
 add_executable(ctempd ${ctempd_src})
-target_link_libraries(ctempd ec-tool)
+target_link_libraries(ctempd ec)
 
